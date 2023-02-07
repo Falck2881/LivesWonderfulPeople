@@ -1,0 +1,8 @@
+# ninja log v5
+0	301	1663348345583976342	InputData_lib_autogen/timestamp	3356bb7046a69344
+0	301	1663348345583976342	InputData_lib_autogen/mocs_compilation.cpp	3356bb7046a69344
+0	301	1663348345583976342	/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/InputData_lib_autogen/timestamp	3356bb7046a69344
+0	301	1663348345583976342	/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/InputData_lib_autogen/mocs_compilation.cpp	3356bb7046a69344
+301	2443	1663348347731935439	CMakeFiles/InputData_lib.dir/InputData_lib_autogen/mocs_compilation.cpp.o	8572ea58614a4cea
+301	4285	1663348349571900404	CMakeFiles/InputData_lib.dir/InputDataWindow.cpp.o	242ddc322f88796e
+4286	4317	1663348349603899794	libInputData_lib.a	a1d4959b35d38fe6

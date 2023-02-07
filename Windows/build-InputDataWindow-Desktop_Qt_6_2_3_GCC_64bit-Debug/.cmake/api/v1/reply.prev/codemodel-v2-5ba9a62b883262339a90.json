@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "InputData_lib",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "InputData_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-InputData_lib-Debug-b704e1860bf5ba5d0280.json",
+					"name" : "InputData_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "InputData_lib_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-InputData_lib_autogen-Debug-beab1fcf44d94dc6ebeb.json",
+					"name" : "InputData_lib_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "InputData_lib_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-InputData_lib_autogen_timestamp_deps-Debug-7fe08988acd6df0899b5.json",
+					"name" : "InputData_lib_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug",
+		"source" : "/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/InputDataWindow"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/MyStyle">
+        <file>MailSy.qss</file>
+        <file>EasyCode.qss</file>
+    </qresource>
+</RCC>
