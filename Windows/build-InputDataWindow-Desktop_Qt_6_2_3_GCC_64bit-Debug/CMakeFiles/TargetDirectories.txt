@@ -1,5 +1,0 @@
-/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
-/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/CMakeFiles/InputData_lib.dir
-/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/CMakeFiles/InputData_lib_autogen_timestamp_deps.dir
-/home/falcon/ProgectC++/SourceCode/LivesWonderfulPeople/Windows/build-InputDataWindow-Desktop_Qt_6_2_3_GCC_64bit-Debug/CMakeFiles/InputData_lib_autogen.dir
