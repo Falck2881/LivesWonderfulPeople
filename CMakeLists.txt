@@ -39,10 +39,14 @@ set(PROJECT_SOURCES
         Windows/Commands/HideWinCommand.h
 )
 
-qt6_add_resources(RCCFILE "${CMAKE_CURRENT_SOURCE_DIR}/Style/MyStyle.qrc"
+qt_add_resources(RCCFILE "${CMAKE_CURRENT_SOURCE_DIR}/Style/MyStyle.qrc"
                           "${CMAKE_CURRENT_SOURCE_DIR}/Icons/MyIcons.qrc")
 
-add_executable(LivesWonderfulPeople ${PROJECT_SOURCES} ${RCCFILE})
+if(WIN32)
+    add_executable(LivesWonderfulPeople WIN32 ${PROJECT_SOURCES} ${RCCFILE})
+else()
+    add_executable(LivesWonderfulPeople ${PROJECT_SOURCES} ${RCCFILE})
+endif()
 
 target_include_directories(LivesWonderfulPeople PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Windows"
                                                        "${CMAKE_CURRENT_SOURCE_DIR}/Windows/Observers"
