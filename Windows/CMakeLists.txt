@@ -20,10 +20,8 @@ set(SOURCE_ONE  Observers/Tree.h
                          StructureData/TreeBuilder.h
                          StructureData/AvlBuilder.h
                          StructureData/AvlBuilder.cpp
-                         Stream/ArchiveAuthor.h
-                         Stream/ArchiveAuthor.cpp
-                         Stream/ArchivePublisher.h
-                         Stream/ArchivePublisher.cpp
+                         Stream/Author.h
+                         Stream/Author.cpp
                          Stream/Publisher.h
                          Stream/Publisher.cpp
                          Stream/BufferData.h

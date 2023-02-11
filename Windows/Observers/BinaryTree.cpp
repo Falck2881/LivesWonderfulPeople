@@ -10,14 +10,14 @@ BinaryTree::BinaryTree(BinaryTree*&& copyTree)
 }
 
 BinaryTree::BinaryTree
-(std::unique_ptr<ArchiveAuthor> newArchiveData):leftChildNode(nullptr),
+(std::unique_ptr<Author> newArchiveData):leftChildNode(nullptr),
                                                 rightChildNode(nullptr),
                                                 _height(1),
                                                 archive{std::move(newArchiveData)}
 {
 }
 
-ArchiveAuthor* BinaryTree::data()
+Author* BinaryTree::data()
 {
     return archive.get();
 }

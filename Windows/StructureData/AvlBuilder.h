@@ -6,7 +6,7 @@
 #include <QtXml/QDomElement>
 #include "TreeBuilder.h"
 #include "BinaryTree.h"
-#include "ArchiveAuthor.h"
+#include "Author.h"
 
 class AvlBuilder: public TreeBuilder
 {

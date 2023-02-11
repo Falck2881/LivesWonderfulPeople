@@ -70,7 +70,7 @@ void AvlBuilder::readBlockDataForWriteInAvlTree(QDomElement childElement)
 void AvlBuilder::insert(const BufferData& newBufferData)
 {
     if(rootNode == nullptr){
-        rootNode = new BinaryTree(std::make_unique<ArchiveAuthor>());
+        rootNode = new BinaryTree(std::make_unique<Author>());
         rootNode->addData(newBufferData);
         return;
     }
@@ -87,7 +87,7 @@ void AvlBuilder::insert(const BufferData& newBufferData)
 void AvlBuilder::insert(const BufferData &newBufferData, BinaryTree*& node)
 {
     if(node == nullptr){
-        node = new BinaryTree(std::make_unique<ArchiveAuthor>());
+        node = new BinaryTree(std::make_unique<Author>());
         node->addData(newBufferData);
         return;
     }

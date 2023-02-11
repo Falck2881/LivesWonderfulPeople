@@ -13,8 +13,8 @@ class TableAboutAuthor: public Tree
         void updateSubject(Tree* const updatedSubject);
 
     private:
-        virtual void update(ArchiveAuthor *archive) final;
-        void addArchiveInVector(ArchiveAuthor*& archive);
+        virtual void update(Author *archive) final;
+        void addArchiveInVector(Author*& archive);
         void addNameAuthor(const QString& nameAuthor);
         void addAllNamesPublishers(QVector<QString> allNamesPublisher);
         void addAllTitleEssay(QVector<QString> allTitleEssay);
