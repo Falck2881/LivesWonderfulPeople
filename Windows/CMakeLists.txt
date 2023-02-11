@@ -15,17 +15,15 @@ add_subdirectory(InputDataWindow)
 
 set(SOURCE_ONE  Observers/Tree.h
                          Observers/Tree.cpp
-                         Observers/BinaryTree.h
-                         Observers/BinaryTree.cpp
+                         Observers/BinaryTree.h Observers/BinaryTree.cpp
                          StructureData/TreeBuilder.h
-                         StructureData/AvlBuilder.h
-                         StructureData/AvlBuilder.cpp
-                         Stream/Author.h
-                         Stream/Author.cpp
-                         Stream/Publisher.h
-                         Stream/Publisher.cpp
+                         StructureData/AvlBuilder.h StructureData/AvlBuilder.cpp
+                         Stream/Author.h Stream/Author.cpp
+                         Stream/Publisher.h Stream/Publisher.cpp
                          Stream/BufferData.h
+                         Stream/Archive.h Stream/Archive.cpp
                          )
+
 set(SOURCE_TWO  UiWindows/HistorySearch.h
                 UiWindows/HistorySearch.cpp
                 UiWindows/historysearch.ui
@@ -46,8 +44,8 @@ set(SOURCE_TWO  UiWindows/HistorySearch.h
                 UiWindows/MainWindow.cpp
                 UiWindows/mainwindow.ui)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Network)
 
 
 add_library(MainWin_lib STATIC ${SOURCE_ONE} ${SOURCE_TWO})
@@ -61,6 +59,7 @@ target_include_directories(MainWin_lib PRIVATE
                                "${CMAKE_CURRENT_SOURCE_DIR}/UiWindows")
 
 target_link_libraries(MainWin_lib InputData_lib Qt${QT_VERSION_MAJOR}::Widgets
-                                                Qt${QT_VERSION_MAJOR}::Core)
+                                                Qt${QT_VERSION_MAJOR}::Core
+                                                Qt${QT_VERSION_MAJOR}::Network)
 
 

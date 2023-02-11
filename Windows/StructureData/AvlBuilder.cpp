@@ -18,7 +18,7 @@ void AvlBuilder::initialize()
 
 void AvlBuilder::openArchiveAuthorForRead()
 {
-    QFile file("Archive.xml");
+    QFile file(archive.fileName());
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
            document.setContent(&file);

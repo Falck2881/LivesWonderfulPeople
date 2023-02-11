@@ -7,6 +7,7 @@
 #include "TreeBuilder.h"
 #include "BinaryTree.h"
 #include "Author.h"
+#include "Archive.h"
 
 class AvlBuilder: public TreeBuilder
 {
@@ -30,5 +31,6 @@ class AvlBuilder: public TreeBuilder
         QDomElement parentElement;
         QDomDocument document;
         BufferData buffer;
+        Archive archive;
 };
 #endif // AVLBUILDER_H
