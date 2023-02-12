@@ -10,16 +10,15 @@ TableAllPublisherWindow::TableAllPublisherWindow():currentRow(0),ui(new Ui::Tabl
     ui->setupUi(this);
     move(600,200);
     setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
-    openArchiveForRead();
-    readAllRecordsByPublishersFromFile();
+    openFile();
+    readAllXmlDom();
     createTable();
     placeAllRecordsAboutPublishers();
 }
 
-void TableAllPublisherWindow::openArchiveForRead()
+void TableAllPublisherWindow::openFile()
 {
-    QFile file;
-    file.setFileName("Archive.xml");
+    QFile file("Arhcive.xml");
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
            document.setContent(&file);
@@ -27,26 +26,31 @@ void TableAllPublisherWindow::openArchiveForRead()
         }
     }
     else{
-        qDebug() << "WARNING! Puth to file - Windows/UiWindows/TableAllPublisherWindow.cpp "
-                    "Name file is not exists. Check name file!";
+        file.setFileName(":/Archive.xml");
+        if(file.open(QIODevice::WriteOnly)){
+            file.write(file.readAll());
+            file.flush();
+            file.close();
+            openFile();
+        }
     }
 }
 
-void TableAllPublisherWindow::readAllRecordsByPublishersFromFile()
+void TableAllPublisherWindow::readAllXmlDom()
 {
     parentElement = parentElement.firstChildElement();
     while(!parentElement.isNull())
     {
         if(parentElement.isElement() && parentElement.tagName() == "RecordAuthor")
         {
-            readAllRecordsByPublishersFromFile(parentElement);
+            readAllXmlDom(parentElement);
             parentElement = parentElement.nextSiblingElement();
             addRecordsAboutPublisher(buffer);
         }
     }
 }
 
-void TableAllPublisherWindow::readAllRecordsByPublishersFromFile(QDomElement childElement)
+void TableAllPublisherWindow::readAllXmlDom(QDomElement childElement)
 {
     childElement = childElement.firstChildElement();
     while(!childElement.isNull())

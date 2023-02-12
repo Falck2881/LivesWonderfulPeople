@@ -24,9 +24,9 @@ class TableAllPublisherWindow : public QWidget
         void createTable();
         void setProperties();
         void setMaxRowCount();
-        void openArchiveForRead();
-        void readAllRecordsByPublishersFromFile();
-        void readAllRecordsByPublishersFromFile(QDomElement childElement);
+        void openFile();
+        void readAllXmlDom();
+        void readAllXmlDom(QDomElement childElement);
         void addRecordsAboutPublisher(const BufferData& buffer);
         void placeAllRecordsAboutPublishers();
         void placeDataAboutPublisherInColumn(Publisher dataPublisher);

@@ -1,4 +1,4 @@
-<!DOCTYPE AuthorList>
+<?xml version="1.0" encoding="UTF-8"?>
 <AuthorList>
     <RecordAuthor>
         <Author>Зосимов Е Ж</Author>
@@ -28106,3 +28106,4 @@
         <YearPublisher>2019</YearPublisher>
         <CountPage>456</CountPage>
     </RecordAuthor>
+</AuthorList>

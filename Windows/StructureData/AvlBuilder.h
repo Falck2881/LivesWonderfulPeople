@@ -7,7 +7,6 @@
 #include "TreeBuilder.h"
 #include "BinaryTree.h"
 #include "Author.h"
-#include "Archive.h"
 
 class AvlBuilder: public TreeBuilder
 {
@@ -17,9 +16,9 @@ class AvlBuilder: public TreeBuilder
         virtual Tree* getReadyTree() final;
         virtual void insert(const BufferData& newBufferData) final;
     private:
-        void openArchiveAuthorForRead();
-        void readBlockDataForWriteInAvlTree();
-        void readBlockDataForWriteInAvlTree(QDomElement childElement);
+        void openFile();
+        void readAllXmlDom();
+        void readAllXmlDom(QDomElement childElement);
         void insert(const BufferData& newBufferData, BinaryTree*& node);
         void fixBalance(BinaryTree*& tree);
         void fixHeight(BinaryTree* const tree);
@@ -31,6 +30,5 @@ class AvlBuilder: public TreeBuilder
         QDomElement parentElement;
         QDomDocument document;
         BufferData buffer;
-        Archive archive;
 };
 #endif // AVLBUILDER_H

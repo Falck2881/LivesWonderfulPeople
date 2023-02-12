@@ -21,7 +21,6 @@ set(SOURCE_ONE  Observers/Tree.h
                          Stream/Author.h Stream/Author.cpp
                          Stream/Publisher.h Stream/Publisher.cpp
                          Stream/BufferData.h
-                         Stream/Archive.h Stream/Archive.cpp
                          )
 
 set(SOURCE_TWO  UiWindows/HistorySearch.h
@@ -44,11 +43,12 @@ set(SOURCE_TWO  UiWindows/HistorySearch.h
                 UiWindows/MainWindow.cpp
                 UiWindows/mainwindow.ui)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets Network)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Network)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets Xml Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Xml Network)
 
+qt_add_resources(DATA_XML "${CMAKE_CURRENT_SOURCE_DIR}/DataXml.qrc")
 
-add_library(MainWin_lib STATIC ${SOURCE_ONE} ${SOURCE_TWO})
+add_library(MainWin_lib STATIC ${SOURCE_ONE} ${SOURCE_TWO} ${DATA_XML})
 target_include_directories(MainWin_lib PRIVATE
                                "${CMAKE_CURRENT_SOURCE_DIR}/InputDataWindow"
                                "${CMAKE_CURRENT_SOURCE_DIR}/SearchPublisherWindow"
@@ -60,6 +60,7 @@ target_include_directories(MainWin_lib PRIVATE
 
 target_link_libraries(MainWin_lib InputData_lib Qt${QT_VERSION_MAJOR}::Widgets
                                                 Qt${QT_VERSION_MAJOR}::Core
-                                                Qt${QT_VERSION_MAJOR}::Network)
+                                                Qt${QT_VERSION_MAJOR}::Network
+                                                Qt${Qt_VERSION_MAJOR}::Xml)
 
 

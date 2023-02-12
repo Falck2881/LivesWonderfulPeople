@@ -18,7 +18,7 @@ bool AddWorkAuthorCommand::executeImplementationPart()
 {
     bool value;
     try {
-        addRecordsInXmlFile();
+        addRecord();
         mainWin->updateDataInApplication(std::move(buffer));
         value = true;
     }  catch (Warning* warning) {
@@ -29,31 +29,30 @@ bool AddWorkAuthorCommand::executeImplementationPart()
     return value;
 }
 
-void AddWorkAuthorCommand::addRecordsInXmlFile()
-{
-    createChildRecords();
-}
-
-void AddWorkAuthorCommand::createChildRecords()
+void AddWorkAuthorCommand::addRecord()
 {
     QDomDocument domDoc;
     QFile file;
-    openFileForAddRecording(file);
+    openFile(QIODevice::ReadOnly, file);
     domDoc.setContent(&file);
-    QDomElement mainRootNode;
-    mainRootNode = domDoc.documentElement();
-    QDomElement parentForChildNode =  createElementsForParentNode(domDoc);
-    mainRootNode.appendChild(parentForChildNode);
-    saveRecordsInFile(file, parentForChildNode);
+    file.flush();
+    file.close();
+    QDomElement rootNode = domDoc.documentElement();
+    QDomElement parentForChildNode =  createElements(domDoc);
+    rootNode.appendChild(parentForChildNode);
+    openFile(QIODevice::WriteOnly, file);
+    file.write(domDoc.toByteArray(4));
+    file.flush();
+    file.close();
 }
 
-void AddWorkAuthorCommand::openFileForAddRecording(QFile& file)
+void AddWorkAuthorCommand::openFile(QIODevice::OpenMode mode, QFile& file)
 {
     QString nameFile("Archive.xml");
     file.setFileName(nameFile);
     if(file.exists())
     {
-        if(file.open(QIODevice::ReadWrite | QIODevice::Text))
+        if(file.open(mode | QIODevice::Text))
             qDebug() << "File with name '" + nameFile + "' successfully opened!";
         else
             qDebug() << "File with name '" + nameFile + "' not open!";
@@ -62,7 +61,7 @@ void AddWorkAuthorCommand::openFileForAddRecording(QFile& file)
         throw new Warning("Warning: File with this name'" + nameFile + "' not exists");
 }
 
-QDomElement AddWorkAuthorCommand::createElementsForParentNode(QDomDocument& domDoc)
+QDomElement AddWorkAuthorCommand::createElements(QDomDocument& domDoc)
 {
     QVector<QString> userInputData{extractInputData()};
     QVector<QString> nameElements;
@@ -98,11 +97,4 @@ QVector<QString> AddWorkAuthorCommand::extractInputData()
         data.push_back(lineEdit->text());
 
     return data;
-}
-
-void AddWorkAuthorCommand::saveRecordsInFile(QFile &file, QDomElement &parentForChildNode)
-{
-    QTextStream streamXml(&file);
-    parentForChildNode.save(streamXml,4,QDomNode::EncodingFromTextStream);
-    file.close();
 }
