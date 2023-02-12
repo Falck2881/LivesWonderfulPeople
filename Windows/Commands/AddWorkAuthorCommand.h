@@ -20,11 +20,9 @@ class AddWorkAuthorCommand: public WorkingWithDataLinker
     private slots:
         virtual bool executeImplementationPart() final;
     private:
-        void addRecordsInXmlFile();
-        void openFileForAddRecording(QFile& file);
-        void saveRecordsInFile(QFile& file, QDomElement& mainRootNode);
-        void createChildRecords();
-        QDomElement createElementsForParentNode(QDomDocument& domDoc);
+        void addRecord();
+        void openFile(QIODevice::OpenMode mode, QFile& file);
+        QDomElement createElements(QDomDocument& domDoc);
         QVector<QString> extractInputData();
         MainWindow*  mainWin;
         QVector<QLineEdit*> arrLineEdit;

@@ -7,11 +7,11 @@
 #include "Publisher.h"
 #include "BufferData.h"
 
-class ArchiveAuthor
+class Author
 {
     public:
-        ArchiveAuthor();
-        ArchiveAuthor(ArchiveAuthor&& dataAuthor);
+        Author();
+        Author(Author&& dataAuthor);
         QString key();
         void addData(const BufferData& bufferData) ;
         QString countPrintedPagesAtAuthor();
@@ -20,7 +20,7 @@ class ArchiveAuthor
         QString countPrintedEssayInPublisher();
         QString countPrintedPagesInPublisher();
         QString bestPublisher();
-        ArchiveAuthor& operator=(ArchiveAuthor&& dataAuthor);
+        Author& operator=(Author&& dataAuthor);
 
     private:
         void setNameAuthor(const QString& fioAuthor);

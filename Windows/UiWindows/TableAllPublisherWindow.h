@@ -7,7 +7,7 @@
 #include <QtXml/QDomElement>
 #include <QWidget>
 #include <QVector>
-#include "Stream/ArchivePublisher.h"
+#include "Stream/Publisher.h"
 
 namespace Ui {
     class TableAllPublisherWindow;
@@ -24,13 +24,13 @@ class TableAllPublisherWindow : public QWidget
         void createTable();
         void setProperties();
         void setMaxRowCount();
-        void openArchiveForRead();
-        void readAllRecordsByPublishersFromFile();
-        void readAllRecordsByPublishersFromFile(QDomElement childElement);
+        void openFile();
+        void readAllXmlDom();
+        void readAllXmlDom(QDomElement childElement);
         void addRecordsAboutPublisher(const BufferData& buffer);
         void placeAllRecordsAboutPublishers();
-        void placeDataAboutPublisherInColumn(ArchivePublisher dataPublisher);
-        QVector<ArchivePublisher> dataPublishers;
+        void placeDataAboutPublisherInColumn(Publisher dataPublisher);
+        QVector<Publisher> dataPublishers;
         QDomElement parentElement;
         QDomDocument document;
         BufferData buffer;

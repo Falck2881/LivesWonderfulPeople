@@ -14,6 +14,20 @@ Publisher::Publisher(const BufferData& buffer):countPrintedPagesInPublisher(0),
     countPrintedEssayInPublisher++;
 }
 
+void Publisher::addData(const BufferData &bufferData)
+{
+    setNamePublisher(bufferData.namePublisher);
+    changeCountPrintedPages(bufferData.countPages.toUInt());
+    changeCountPrintedEssay();
+}
+
+void Publisher::setNamePublisher(const QString &newNamePublisher)
+{
+    if(namePublisher == "")
+        namePublisher = std::move(newNamePublisher);
+}
+
+
 void Publisher::changeCountPrintedEssay()
 {
     countPrintedEssayInPublisher+=1;

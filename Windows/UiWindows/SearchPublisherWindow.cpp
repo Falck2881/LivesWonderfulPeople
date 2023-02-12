@@ -6,7 +6,6 @@
 #include "CheckInputDataCommand.h"
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
-#include "ArchiveAuthor.h"
 
 SearchPublisherWindow::SearchPublisherWindow
 (Window* mainWindow):Window(this),

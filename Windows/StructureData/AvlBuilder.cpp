@@ -1,8 +1,11 @@
 #include "AvlBuilder.h"
 #include <QDebug>
 
+void moveRecordsFileInNewFile();
+
 AvlBuilder::AvlBuilder():rootNode(nullptr)
 {
+    Q_INIT_RESOURCE(DataXml);
 }
 
 Tree* AvlBuilder::getReadyTree()
@@ -12,40 +15,62 @@ Tree* AvlBuilder::getReadyTree()
 
 void AvlBuilder::initialize()
 {
-    openArchiveAuthorForRead();
-    readBlockDataForWriteInAvlTree();
+    openFile();
+    readAllXmlDom();
 }
 
-void AvlBuilder::openArchiveAuthorForRead()
+void AvlBuilder::openFile()
 {
     QFile file("Archive.xml");
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
            document.setContent(&file);
            parentElement = document.documentElement();
+           file.flush();
+           file.close();
         }
     }
     else{
-        qDebug() << "WARNING! Puth to file - Windows/StructureData/AvlBuilder.cpp "
-                    "Name file is not exists. Check name file!";
+        moveRecordsFileInNewFile();
+        openFile();
     }
 }
 
-void AvlBuilder::readBlockDataForWriteInAvlTree()
+void moveRecordsFileInNewFile()
+{
+    QFile rccFile(":/Data/Archive.xml");
+    if(rccFile.exists())
+    {
+        if(rccFile.open(QIODevice::ReadOnly))
+        {
+            QFile copyRccFile("Archive.xml");
+            if(copyRccFile.open(QIODevice::WriteOnly))
+            {
+                copyRccFile.write(rccFile.readAll());
+                copyRccFile.flush();
+                copyRccFile.close();
+            }
+            rccFile.flush();
+            rccFile.close();
+        }
+    }
+}
+
+void AvlBuilder::readAllXmlDom()
 {
     parentElement = parentElement.firstChildElement();
     while(!parentElement.isNull())
     {
         if(parentElement.isElement() && parentElement.tagName() == "RecordAuthor")
         {
-            readBlockDataForWriteInAvlTree(parentElement);
+            readAllXmlDom(parentElement);
             parentElement = parentElement.nextSiblingElement();
             insert(buffer);
         }
     }
 }
 
-void AvlBuilder::readBlockDataForWriteInAvlTree(QDomElement childElement)
+void AvlBuilder::readAllXmlDom(QDomElement childElement)
 {
     childElement = childElement.firstChildElement();
     while(!childElement.isNull())
@@ -70,7 +95,7 @@ void AvlBuilder::readBlockDataForWriteInAvlTree(QDomElement childElement)
 void AvlBuilder::insert(const BufferData& newBufferData)
 {
     if(rootNode == nullptr){
-        rootNode = new BinaryTree(std::make_unique<ArchiveAuthor>());
+        rootNode = new BinaryTree(std::make_unique<Author>());
         rootNode->addData(newBufferData);
         return;
     }
@@ -87,7 +112,7 @@ void AvlBuilder::insert(const BufferData& newBufferData)
 void AvlBuilder::insert(const BufferData &newBufferData, BinaryTree*& node)
 {
     if(node == nullptr){
-        node = new BinaryTree(std::make_unique<ArchiveAuthor>());
+        node = new BinaryTree(std::make_unique<Author>());
         node->addData(newBufferData);
         return;
     }

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Data">
+        <file>Archive.xml</file>
+    </qresource>
+</RCC>
