@@ -6,6 +6,7 @@
 - OC Windows - https://drive.google.com/drive/folders/1XV3TBPi3qYQULZylit2pfBkbYKAMYgMf?usp=share_link
 
 В этом проекте вы можете ?:
+
 - Выбрать одно из следующих действий: 
 
   ![изображение](https://user-images.githubusercontent.com/100667839/217431126-cd8917d4-1eb3-49a7-bada-99ad8e1d118b.png)
