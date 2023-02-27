@@ -26,11 +26,15 @@ void TableAllPublisherWindow::openFile()
         }
     }
     else{
-        file.setFileName(":/Archive.xml");
+        file.setFileName(":/Data/Archive.xml");
         if(file.open(QIODevice::WriteOnly)){
+            QFile qrcFile("Arhcive.xml");
+            qrcFile.open(QIODevice::WriteOnly);
             file.write(file.readAll());
             file.flush();
             file.close();
+            qrcFile.flush();
+            qrcFile.close();
             openFile();
         }
     }
