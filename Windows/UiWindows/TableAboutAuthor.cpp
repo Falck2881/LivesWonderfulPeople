@@ -6,14 +6,14 @@ TableAboutAuthor::TableAboutAuthor(QTableWidget* uiTable, Tree* subject):table(u
     subject->append(this);
 }
 
-void TableAboutAuthor::update(ArchiveAuthor *archive)
+void TableAboutAuthor::update(Author *archive)
 {
     addArchiveInVector(archive);
     showSearchData();
     clearArrayFoundDataForFollowingData();
 }
 
-void TableAboutAuthor::addArchiveInVector(ArchiveAuthor *&archive)
+void TableAboutAuthor::addArchiveInVector(Author *&archive)
 {
     addNameAuthor(archive->key());
     addAllNamesPublishers(archive->allNamesPublishers());

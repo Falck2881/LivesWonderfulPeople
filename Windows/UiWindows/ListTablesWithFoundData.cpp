@@ -18,7 +18,7 @@ ListTablesWithFoundData& ListTablesWithFoundData::operator=(ListTablesWithFoundD
     return *this;
 }
 
-void ListTablesWithFoundData::insertInEnd(ArchiveAuthor *&data)
+void ListTablesWithFoundData::insertInEnd(Author *&data)
 {
     if(this->foundData == nullptr){
         this->foundData = data;
@@ -29,7 +29,7 @@ void ListTablesWithFoundData::insertInEnd(ArchiveAuthor *&data)
         insertInEnd(data,this->saveLastNode->nextNode);
 }
 
-void ListTablesWithFoundData::insertInEnd(ArchiveAuthor *&data, ListTablesWithFoundData*& currentNode)
+void ListTablesWithFoundData::insertInEnd(Author *&data, ListTablesWithFoundData*& currentNode)
 {
     if(currentNode == nullptr){
         currentNode = new ListTablesWithFoundData;

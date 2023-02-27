@@ -14,7 +14,7 @@ HistorySearch::HistorySearch(Tree* subject):
     subject->append(this);
 }
 
-void HistorySearch::update(ArchiveAuthor *archive)
+void HistorySearch::update(Author *archive)
 {
     listFoundData->insertInEnd(archive);
     showFoundData(archive->key());

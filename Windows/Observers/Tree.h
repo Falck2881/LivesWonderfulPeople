@@ -6,7 +6,7 @@
 #include <memory>
 #include <QString>
 #include "Stream/BufferData.h"
-#include "Stream/ArchiveAuthor.h"
+#include "Stream/Author.h"
 
 class Tree
 {
@@ -14,10 +14,10 @@ class Tree
         virtual ~Tree(){}
         virtual QString key(){return "";}
         virtual void addData(const BufferData& buffer){}
-        virtual void update(ArchiveAuthor* archive){}
+        virtual void update(Author* archive){}
         virtual void search(const QString &key){}
         void append(Tree* observers);
-        void notifyAllObservers(ArchiveAuthor* foundArchive);
+        void notifyAllObservers(Author* foundArchive);
     private:
         QList<Tree*> observers;
     protected:

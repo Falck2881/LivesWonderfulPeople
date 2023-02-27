@@ -2,18 +2,17 @@
 #define BALACNCEDTREE_H
 
 #include "Tree.h"
-#include "ArchiveAuthor.h"
 #include <QList>
 
 class BinaryTree: public Tree
 {
     public:
         BinaryTree(BinaryTree*&& copeTree);
-        BinaryTree(std::unique_ptr<ArchiveAuthor> newArchiveData);
+        BinaryTree(std::unique_ptr<Author> newArchiveData);
         virtual void addData(const BufferData& buffer) final;
         virtual QString key() final;
         virtual void search(const QString &key);
-        ArchiveAuthor* data();
+        Author* data();
         BinaryTree& operator=(BinaryTree&& tree);
         BinaryTree* leftChildNode;
         BinaryTree* rightChildNode;
@@ -22,7 +21,7 @@ class BinaryTree: public Tree
     private:
         void search(const QString& key, BinaryTree*& currentNode);
         uint64_t _height;
-        std::unique_ptr<ArchiveAuthor> archive;
+        std::unique_ptr<Author> archive;
 };
 
 #endif // BALACNCEDTREE_H

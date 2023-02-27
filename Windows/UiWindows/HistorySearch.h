@@ -20,7 +20,7 @@ class HistorySearch : public QWidget, Tree
         void updateSubject(Tree* const subject);
 
     private:
-        virtual void update(ArchiveAuthor *archive) final;
+        virtual void update(Author *archive) final;
         void showFoundData(const QString& title);
         Tree* subject;
         std::unique_ptr<ListTablesWithFoundData> listFoundData;

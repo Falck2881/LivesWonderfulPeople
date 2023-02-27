@@ -12,6 +12,8 @@ class Publisher
         Publisher();
         Publisher(const BufferData& buffer);
         QString name() const;
+        void addData(const BufferData &bufferData);
+        void setNamePublisher(const QString& newNamePublisher);
         uint64_t countPrintedPages() const;
         uint64_t countPrintedEssay() const;
         void changeCountPrintedPages(uint64_t newCountPrintedPages);

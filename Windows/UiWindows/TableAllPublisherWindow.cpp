@@ -1,6 +1,5 @@
 #include "TableAllPublisherWindow.h"
 #include "ui_tableallpublisherwindow.h"
-#include "../Stream/ArchivePublisher.h"
 #include <QFile>
 #include <QDebug>
 #include <QHeaderView>
@@ -11,16 +10,15 @@ TableAllPublisherWindow::TableAllPublisherWindow():currentRow(0),ui(new Ui::Tabl
     ui->setupUi(this);
     move(600,200);
     setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
-    openArchiveForRead();
-    readAllRecordsByPublishersFromFile();
+    openFile();
+    readAllXmlDom();
     createTable();
     placeAllRecordsAboutPublishers();
 }
 
-void TableAllPublisherWindow::openArchiveForRead()
+void TableAllPublisherWindow::openFile()
 {
-    QFile file;
-    file.setFileName("Archive.xml");
+    QFile file("Arhcive.xml");
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
            document.setContent(&file);
@@ -28,26 +26,31 @@ void TableAllPublisherWindow::openArchiveForRead()
         }
     }
     else{
-        qDebug() << "WARNING! Puth to file - Windows/UiWindows/TableAllPublisherWindow.cpp "
-                    "Name file is not exists. Check name file!";
+        file.setFileName(":/Archive.xml");
+        if(file.open(QIODevice::WriteOnly)){
+            file.write(file.readAll());
+            file.flush();
+            file.close();
+            openFile();
+        }
     }
 }
 
-void TableAllPublisherWindow::readAllRecordsByPublishersFromFile()
+void TableAllPublisherWindow::readAllXmlDom()
 {
     parentElement = parentElement.firstChildElement();
     while(!parentElement.isNull())
     {
         if(parentElement.isElement() && parentElement.tagName() == "RecordAuthor")
         {
-            readAllRecordsByPublishersFromFile(parentElement);
+            readAllXmlDom(parentElement);
             parentElement = parentElement.nextSiblingElement();
             addRecordsAboutPublisher(buffer);
         }
     }
 }
 
-void TableAllPublisherWindow::readAllRecordsByPublishersFromFile(QDomElement childElement)
+void TableAllPublisherWindow::readAllXmlDom(QDomElement childElement)
 {
     childElement = childElement.firstChildElement();
     while(!childElement.isNull())
@@ -71,7 +74,7 @@ void TableAllPublisherWindow::readAllRecordsByPublishersFromFile(QDomElement chi
 
 void TableAllPublisherWindow::addRecordsAboutPublisher(const BufferData &buffer)
 {
-    ArchivePublisher archivePublisher;
+    Publisher archivePublisher;
     if(dataPublishers.size() == 0){
         archivePublisher.addData(buffer);
         dataPublishers.push_back(archivePublisher);
@@ -79,7 +82,7 @@ void TableAllPublisherWindow::addRecordsAboutPublisher(const BufferData &buffer)
     else{
         for(uint8_t i = 0; i < dataPublishers.size(); ++i)
         {
-            if(buffer.namePublisher == dataPublishers[i].key()){
+            if(buffer.namePublisher == dataPublishers[i].name()){
                 dataPublishers[i].addData(buffer);
                 break;
             }
@@ -141,13 +144,13 @@ void TableAllPublisherWindow::placeAllRecordsAboutPublishers()
             placeDataAboutPublisherInColumn(dataPublishers.at(currentRow));
 }
 
-void TableAllPublisherWindow::placeDataAboutPublisherInColumn(ArchivePublisher dataPublisher)
+void TableAllPublisherWindow::placeDataAboutPublisherInColumn(Publisher dataPublisher)
 {
-    QList<QString> essayAndPages{dataPublisher.countPrintedEssayInPublisher(),
-                                 dataPublisher.countPrintedPagesInPublisher()};
+    QList<QString> essayAndPages{QString::number(dataPublisher.countPrintedEssay()),
+                                 QString::number(dataPublisher.countPrintedPages())};
 
     for(uint8_t column = 0; column < tableAllPublisher->columnCount(); ++column){
-        tableAllPublisher->setVerticalHeaderItem(currentRow, new QTableWidgetItem(dataPublisher.key()));
+        tableAllPublisher->setVerticalHeaderItem(currentRow, new QTableWidgetItem(dataPublisher.name()));
         tableAllPublisher->setItem(currentRow, column, new QTableWidgetItem(essayAndPages.at(column)));
     }
 

@@ -1,41 +1,41 @@
-#include "ArchiveAuthor.h"
+#include "Author.h"
 #include <QDebug>
 
-ArchiveAuthor::ArchiveAuthor():countPrintedPages(0)
+Author::Author():countPrintedPages(0)
 {
 }
 
-QString ArchiveAuthor::countPrintedPagesAtAuthor()
+QString Author::countPrintedPagesAtAuthor()
 {
     return QString::number(countPrintedPages);
 }
 
-QString ArchiveAuthor::countPrintedPagesInPublisher()
+QString Author::countPrintedPagesInPublisher()
 {
     return QString::number(publisher->countPrintedPages());
 }
 
-QString ArchiveAuthor::countPrintedEssayInPublisher()
+QString Author::countPrintedEssayInPublisher()
 {
     return QString::number(publisher->countPrintedEssay());
 }
 
-QString ArchiveAuthor::bestPublisher()
+QString Author::bestPublisher()
 {
     return publisher->name();
 }
 
-QVector<QString> ArchiveAuthor::allNamesPublishers()
+QVector<QString> Author::allNamesPublishers()
 {
     return nameAllPublisher;
 }
 
-QVector<QString> ArchiveAuthor::allNamesEssay()
+QVector<QString> Author::allNamesEssay()
 {
     return allFinishedEssay;
 }
 
-ArchiveAuthor::ArchiveAuthor(ArchiveAuthor&& dataAuthor)
+Author::Author(Author&& dataAuthor)
 {
     listPublisher = std::move(dataAuthor.listPublisher);
     fioAuthor = std::move(dataAuthor.fioAuthor);
@@ -43,12 +43,12 @@ ArchiveAuthor::ArchiveAuthor(ArchiveAuthor&& dataAuthor)
     countPrintedPages = dataAuthor.countPrintedPages;
 }
 
-QString ArchiveAuthor::key()
+QString Author::key()
 {
     return fioAuthor;
 }
 
-ArchiveAuthor& ArchiveAuthor::operator=(ArchiveAuthor&& dataAuthor)
+Author& Author::operator=(Author&& dataAuthor)
 {
     if(this == &dataAuthor)
         return *this;
@@ -60,7 +60,7 @@ ArchiveAuthor& ArchiveAuthor::operator=(ArchiveAuthor&& dataAuthor)
     return *this;
 }
 
-void ArchiveAuthor::addData(const BufferData &bufferData)
+void Author::addData(const BufferData &bufferData)
 {
     setNameAuthor(bufferData.fioAuthor);
     addRecordAboutPublisher(bufferData);
@@ -71,13 +71,13 @@ void ArchiveAuthor::addData(const BufferData &bufferData)
     searchBestPublisher();
 }
 
-void ArchiveAuthor::setNameAuthor(const QString& newFioAuthor)
+void Author::setNameAuthor(const QString& newFioAuthor)
 {
     if(fioAuthor == "")
         fioAuthor = std::move(newFioAuthor);
 }
 
-void ArchiveAuthor::addRecordAboutPublisher(const BufferData& bufferData)
+void Author::addRecordAboutPublisher(const BufferData& bufferData)
 {
      if(listPublisher.size() == 0)
          listPublisher.push_back(std::make_shared<Publisher>(bufferData));
@@ -97,7 +97,7 @@ void ArchiveAuthor::addRecordAboutPublisher(const BufferData& bufferData)
      }
 }
 
-void ArchiveAuthor::addNewNamePublisher(const QString &newNamePublisher)
+void Author::addNewNamePublisher(const QString &newNamePublisher)
 {
     if(nameAllPublisher.size() == 0)
         nameAllPublisher.push_back(std::move(newNamePublisher));
@@ -112,7 +112,7 @@ void ArchiveAuthor::addNewNamePublisher(const QString &newNamePublisher)
     }
 }
 
-void ArchiveAuthor::addNewEssay(const QString& newNameEssay)
+void Author::addNewEssay(const QString& newNameEssay)
 {
     if(allFinishedEssay.size() == 0)
         allFinishedEssay.push_back(newNameEssay);
@@ -127,12 +127,12 @@ void ArchiveAuthor::addNewEssay(const QString& newNameEssay)
     }
 }
 
-void ArchiveAuthor::addNewCountPrintedPages(const QString& newCountPrintedPages)
+void Author::addNewCountPrintedPages(const QString& newCountPrintedPages)
 {
     countPrintedPages+= newCountPrintedPages.toUInt();
 }
 
-void ArchiveAuthor::searchBestPublisher()
+void Author::searchBestPublisher()
 {
     if(publisher == nullptr){
         publisher = std::make_shared<Publisher>();
