@@ -25,19 +25,6 @@ void TableAllPublisherWindow::openFile()
            parentElement = document.documentElement();
         }
     }
-    else{
-        file.setFileName(":/Data/Archive.xml");
-        if(file.open(QIODevice::ReadOnly)){
-            QFile qrcFile("Arhcive.xml");
-            qrcFile.open(QIODevice::WriteOnly);
-            qrcFile.write(file.readAll());
-            file.flush();
-            file.close();
-            qrcFile.flush();
-            qrcFile.close();
-            openFile();
-        }
-    }
 }
 
 void TableAllPublisherWindow::readAllXmlDom()
