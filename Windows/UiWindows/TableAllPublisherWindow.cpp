@@ -18,11 +18,13 @@ TableAllPublisherWindow::TableAllPublisherWindow():currentRow(0),ui(new Ui::Tabl
 
 void TableAllPublisherWindow::openFile()
 {
-    QFile file("Arhcive.xml");
+    QFile file("Archive.xml");
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
            document.setContent(&file);
            parentElement = document.documentElement();
+           file.flush();
+           file.close();
         }
     }
 }

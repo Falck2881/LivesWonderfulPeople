@@ -33,12 +33,10 @@ void writeAllRecordsInXmlFile()
 {
     QFile qrcfile(":/Data/Archive.xml");
     if(qrcfile.open(QIODevice::ReadOnly)){
-        QFile newFile("Arhcive.xml");
+        QFile newFile("Archive.xml");
         if(newFile.open(QIODevice::WriteOnly)){
             newFile.write(qrcfile.readAll());
-            qrcfile.flush();
             qrcfile.close();
-            newFile.flush();
             newFile.close();
         }
     }

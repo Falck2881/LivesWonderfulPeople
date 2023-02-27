@@ -5,7 +5,6 @@ void moveRecordsFileInNewFile();
 
 AvlBuilder::AvlBuilder():rootNode(nullptr)
 {
-    Q_INIT_RESOURCE(DataXml);
 }
 
 Tree* AvlBuilder::getReadyTree()
@@ -22,34 +21,13 @@ void AvlBuilder::initialize()
 void AvlBuilder::openFile()
 {
     QFile file("Archive.xml");
-    if(file.exists()){
-        if(file.open(QIODevice::ReadOnly)){
-           document.setContent(&file);
-           parentElement = document.documentElement();
-           file.flush();
-           file.close();
-        }
+    if(file.open(QIODevice::ReadOnly)){
+       document.setContent(&file);
+       parentElement = document.documentElement();
+       file.flush();
+       file.close();
     }
-}
 
-void moveRecordsFileInNewFile()
-{
-    QFile rccFile(":/Data/Archive.xml");
-    if(rccFile.exists())
-    {
-        if(rccFile.open(QIODevice::ReadOnly))
-        {
-            QFile copyRccFile("Archive.xml");
-            if(copyRccFile.open(QIODevice::WriteOnly))
-            {
-                copyRccFile.write(rccFile.readAll());
-                copyRccFile.flush();
-                copyRccFile.close();
-            }
-            rccFile.flush();
-            rccFile.close();
-        }
-    }
 }
 
 void AvlBuilder::readAllXmlDom()
