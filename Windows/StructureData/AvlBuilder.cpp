@@ -30,10 +30,6 @@ void AvlBuilder::openFile()
            file.close();
         }
     }
-    else{
-        moveRecordsFileInNewFile();
-        openFile();
-    }
 }
 
 void moveRecordsFileInNewFile()
