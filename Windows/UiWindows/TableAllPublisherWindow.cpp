@@ -27,10 +27,10 @@ void TableAllPublisherWindow::openFile()
     }
     else{
         file.setFileName(":/Data/Archive.xml");
-        if(file.open(QIODevice::WriteOnly)){
+        if(file.open(QIODevice::ReadOnly)){
             QFile qrcFile("Arhcive.xml");
             qrcFile.open(QIODevice::WriteOnly);
-            file.write(file.readAll());
+            qrcFile.write(file.readAll());
             file.flush();
             file.close();
             qrcFile.flush();

@@ -7,13 +7,13 @@
 #include <QTextStream>
 #include <QDebug>
 
-void translation(QApplication& app);
 void readStyleSheet(QApplication& app);
+void writeAllRecordsInXmlFile();
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     readStyleSheet(app);
-
+    writeAllRecordsInXmlFile();
     MainWindow w;
     w.open();
     return app.exec();
@@ -29,3 +29,17 @@ void readStyleSheet(QApplication& app)
     file.close();
 }
 
+void writeAllRecordsInXmlFile()
+{
+    QFile qrcfile(":/Data/Archive.xml");
+    if(qrcfile.open(QIODevice::ReadOnly)){
+        QFile newFile("Arhcive.xml");
+        if(newFile.open(QIODevice::WriteOnly)){
+            newFile.write(qrcfile.readAll());
+            qrcfile.flush();
+            qrcfile.close();
+            newFile.flush();
+            newFile.close();
+        }
+    }
+}
