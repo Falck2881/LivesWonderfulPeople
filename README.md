@@ -2,8 +2,8 @@
 
 Платформы:
 
-- OC Linux -  https://drive.google.com/drive/folders/1eOdXUMFAuz06FfP-3t_y0QA1aTbNc9ve?usp=share_link
-- OC Windows - https://drive.google.com/drive/folders/1XV3TBPi3qYQULZylit2pfBkbYKAMYgMf?usp=share_link
+- OC Linux -  https://drive.google.com/drive/folders/1eOdXUMFAuz06FfP-3t_y0QA1aTbNc9ve?usp=share_link 
+- OC Windows - https://drive.google.com/drive/folders/1XV3TBPi3qYQULZylit2pfBkbYKAMYgMf?usp=share_link 
 
 В этом проекте вы можете ?:
 
