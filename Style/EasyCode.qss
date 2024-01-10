@@ -25,7 +25,6 @@ QWidget
 {
 	background-color: #aaaaaa;
 	color: #000;
-
 }
 
 

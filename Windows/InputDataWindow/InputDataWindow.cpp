@@ -20,6 +20,7 @@ InputDataWindow::InputDataWindow(Window* mainWin):Window(this),mainWin(mainWin),
     setValidatorForInput();
     addCommandsInLinkers();
     setConnection();
+
 }
 
 void InputDataWindow::setValidatorForInput()

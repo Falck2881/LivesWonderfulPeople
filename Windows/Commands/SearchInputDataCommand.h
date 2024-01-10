@@ -10,6 +10,7 @@ class SearchInputDataCommand: public WorkingWithDataLinker
 {
     Q_OBJECT
 
+
     public:
         SearchInputDataCommand(const QLineEdit* lineEdit, Tree* tree);
         void updataTree(Tree* newTree);

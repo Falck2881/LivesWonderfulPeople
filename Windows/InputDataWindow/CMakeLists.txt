@@ -21,6 +21,7 @@ target_include_directories(InputData_lib PUBLIC "../"
                                                  "../Commands"
                                                  "../UiWindows")
 
+
 target_link_libraries(InputData_lib PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
                                             Qt${QT_VERSION_MAJOR}::Core)
 
