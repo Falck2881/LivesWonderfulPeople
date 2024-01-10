@@ -40,4 +40,5 @@ void writeAllRecordsInXmlFile()
             newFile.close();
         }
     }
+
 }

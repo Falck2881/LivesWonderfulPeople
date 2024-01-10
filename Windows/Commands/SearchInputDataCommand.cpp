@@ -23,6 +23,7 @@ bool SearchInputDataCommand::checkDataInTree()
 {
     bool value = true;
 
+
     if(tree == nullptr){
         value = false;
         qDebug() << QString("Build a search tree in the class constructor - SearchPublisherWin");

@@ -7,6 +7,7 @@ class HideWinCommand: public ManagerLinkerCommand
 {
     Q_OBJECT
 
+
     public:
         explicit HideWinCommand(Window* const window);
     private:
